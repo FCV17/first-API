@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-var ingredients [
+var ingredients = [
 	{
 		"id":"5726364",
 		"text": "eggs"	
