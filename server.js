@@ -22,13 +22,23 @@ var ingredients = [
 	}
 ];
 
-app.get('/', function (req, res){
+app.get('/', function(req, res){
 	res.send(ingredients);
 });
 
 
 app.get('/funions', function(req, res) {
 	res.send("give me my funions foo!");
+});
+
+app.post('/', function(req, res){
+	var ingredient = req.body;
+	if (!ingredient || ingredient.text === "") {
+		res.status(500).send({error:" ingredient must be text"});
+	} else {
+		ingredients.push(ingredient);
+		res.status(200).send(ingredients);
+	}
 });
 
 
