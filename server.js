@@ -10,7 +10,7 @@ var ingredients = [
 		"id":"5726364",
 		"text": "eggs"	
 	},
-	{   "id":"385955",
+	{       "id":"385955",
 		"text": "milk"
 	},
 	{	"id":"43535",
