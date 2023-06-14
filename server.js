@@ -22,7 +22,7 @@ var ingredients = [
 	}
 ];
 
-app.get('/', function(req, res){
+app.get('/ingredients', function(req, res){
 	res.send(ingredients);
 });
 
@@ -31,7 +31,7 @@ app.get('/funions', function(req, res) {
 	res.send("give me my funions foo!");
 });
 
-app.post('/', function(req, res){
+app.post('/ingredients', function(req, res){
 	var ingredient = req.body;
 	if (!ingredient || ingredient.text === "") {
 		res.status(500).send({error:" ingredient must be text"});
@@ -41,6 +41,22 @@ app.post('/', function(req, res){
 	}
 });
 
+app.put('/ingredients/:ingredientId', function(req, res){
+	
+	var ingredientId = req.param.ingredientId;
+	var newText = req.body.text;
+	
+	if (!newText || newText=== ""){
+		resp.status(500).send({error:"must input text"})
+	} else {
+		for(var x = 0; x < ingredients.length, x++){	
+			var ing = ingredients[x];
+			if (ing.id === request.param.ingredientId) {
+				ingredients[x].newText = text;
+			}
+		}
+	}
+});
 
 app.listen(3000, function() {
 	console.log("First API running on port 3000!");
