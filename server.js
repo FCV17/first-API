@@ -43,21 +43,28 @@ app.post('/ingredients', function(req, res){
 
 app.put('/ingredients/:ingredientId', function(req, res){
 	
-	var ingredientId = req.param.ingredientId;
+	var ingredientId = req.params.ingredientId;
 	var newText = req.body.text;
 	
 	if (!newText || newText=== ""){
-		resp.status(500).send({error:"must input text"})
+		res.status(500).send({error:"must input text"})
 	} else {
-		for(var x = 0; x < ingredients.length, x++){	
+		for (var x = 0; x < ingredients.length; x++) {	
 			var ing = ingredients[x];
-			if (ing.id === request.param.ingredientId) {
-				ingredients[x].newText = text;
+			
+			if (ing.id === request.params.ingredientId){
+				ingredients[x].text = newText;
+				objectFound = true;
+				break;
 			}
 		}
+		res.send(ingredients);
 	}
 });
 
 app.listen(3000, function() {
 	console.log("First API running on port 3000!");
 });
+
+
+
